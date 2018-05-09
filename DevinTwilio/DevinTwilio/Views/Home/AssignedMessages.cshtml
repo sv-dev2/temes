@@ -1,0 +1,107 @@
+﻿
+@model IEnumerable<DevinTwilio.Models.AssignedMessageViewModels>
+
+@{
+    ViewBag.Title = "Assigned Messages";
+}
+<h3>Assigned Messages</h3>
+<hr />
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@if (TempData["successMessage"] != null)
+{
+    <div class="alert alert-success msgbox">
+        <strong>@TempData["successMessage"]</strong>
+    </div>
+}
+
+@if (TempData["errorMessage"] != null)
+{
+    <div class="alert alert-danger msgbox">
+        <strong>@TempData["errorMessage"] </strong>
+    </div>
+}
+
+<table class="table" id="Messages">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("ID")
+            </th>
+            <th>
+                @Html.DisplayName("Message")
+            </th>
+            <th>
+                @Html.DisplayName("Frequency Of Delivery")
+            </th>
+            <th>Assigned User</th>
+            <th>AssigTo User Type</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MessageID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Frequency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignedUser)
+                </td>
+                <td>
+                    @Html.DropDownListFor(modelItem => item.AssignedUser, ViewBag.userTypes as IEnumerable<SelectListItem>, "Select userType")
+                </td>
+                <td>
+                    <input type="button"  id="btnAssigned" value="Assigned" class="btn btn-success Assign-Row" />
+                    @*<input type="button" onclick="MessageToBeAssign(this)" id="btnAssigned" value="Assigned" class="btn btn-success use-address" />*@ 
+                    @*  @Html.ActionLink("Details", "Details", new { id = item.AutoId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.AutoId })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#Messages').DataTable();
+        });
+
+        $(".Assign-Row").click(function () {
+            var $row = $(this).closest("tr");
+            var mID = $row.find("td:eq(0)").text(); // get current row 1st TD value
+            var Message = $row.find("td:eq(1)").text(); // get current row 2nd TD
+            var uID =  $row.find("td:eq(4) option:selected").val()
+           // var jsonText = JSON.stringify({ mID: mID, uID: uID });
+            $.ajax({
+                url: '@Url.Action("AssignedMessagesToUser", "Home")',
+                type: 'GET',
+                data: { "mID": mID, "uID": uID },
+                dataType: 'json',
+                success: function (data)
+                { alert(data);},
+                error: function (error)
+                { alert(error);}
+            });
+
+        });
+     
+        $(document).ready(function () {
+            // setTimeout() function will be fired after page is loaded
+            // it will wait for 5 sec. and then will fire
+            // $("#successMessage").hide() function
+            setTimeout(function () {
+                $(".msgbox").hide('blind', {}, 600)
+            }, 5000);
+        });
+
+    </script>
+}

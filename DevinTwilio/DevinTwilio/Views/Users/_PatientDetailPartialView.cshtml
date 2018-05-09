@@ -1,0 +1,69 @@
+﻿@model DevinTwilio.Models.UserViewModels
+@{
+    Layout = null;
+}
+
+<table class="table" id="UserData">
+        <tr>
+            <th>
+                @Html.DisplayName("ID")
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => Model.User_ID)
+            </td>
+            <th>
+
+            </th>
+            <td>@Html.ActionLink("Edit", "AddOrEdit", new { id = @Model.User_ID, actionDo= "Details" })</td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayName("Name")
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => Model.User_Name)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayName("Phone")
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => Model.MobileNumber)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayName("Enrollment Date")
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => Model.EnrollmentDate)
+            </td>
+        </tr>
+
+    <tr>
+        <th>
+            @Html.DisplayName("Status")
+        </th>
+        <td>
+
+            @Html.DisplayFor(modelItem => Model.UserStatus)
+           
+            @*@Html.ActionLink(@Model.UserStatus, "UpdateStatus", new { userId = @Model.User_ID })*@
+
+           
+        </td>
+    </tr>
+
+
+        <tr>
+            <th>
+                @Html.DisplayName("Notes")
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Notes)
+            </td>
+        </tr>
+</table>
+
+

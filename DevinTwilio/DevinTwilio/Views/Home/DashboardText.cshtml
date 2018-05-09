@@ -1,0 +1,132 @@
+﻿@model DevinTwilio.Models.DashoboardModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/editor.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#txtEditor").Editor();
+        });
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="~/Content/editor.css" rel="stylesheet" />
+    <link href="~/Content/Custom.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top nav_bar_design">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("TeMeS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @{
+                        var RoleName = "";
+                        if (Session["loggedUser"] != null)
+                        {
+                            <li>@Html.ActionLink("Log", "Logs", "Users")</li>
+                            //var user = (DevinTwilio.Models.UserViewModels)Session["loggedUser"];
+                            //RoleName = user.RoleName;
+                            <li>@Html.ActionLink("Patients", "Index", "Users")</li>
+                            <li>@Html.ActionLink("Appointments", "Index", "Appointment")</li>
+                            @*<li>@Html.ActionLink("Message Tree", "MessageTree", "Home")</li>*@
+
+                            <li>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        Settings
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="~/Home/Index">Messages</a>
+                                        <a class="dropdown-item" href="~/Provider/Index">Providers</a>
+                                        <a class="dropdown-item" href="~/Users/Users">Users</a>
+                                        <a class="dropdown-item" href="~/TriggerEvent/Index">Event </a>
+                                        <a class="dropdown-item" href="~/Home/DashboardText">Dashboard</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+        <div class="container-fluid">
+            <hr />
+            <hr />
+            <h3> Description</h3>
+
+            @using (Html.BeginForm("DashboardText", "Home", FormMethod.Post, new { @class = "form-horizontal ", role = "form" }))
+            {
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 nopadding">
+                                @*<textarea id="txtEditor"></textarea>*@
+
+                                @Html.HiddenFor(m => m.Id, new { @id = "id" })
+                                <div>@Html.TextAreaFor(m => m.Description, new { @class = "ckeditor", @id = "txtEditor" })</div>
+
+                                @Html.HiddenFor(m => m.EditorText, new { @id = "EditorText" })
+
+
+
+
+
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-12 nopadding">
+                                <input type="submit" style="float:right" id="btnSubmit" value="Save" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Text Message Support (TeMeS)</p>
+        </footer>
+    </div>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".Editor-editor").html('@Html.Raw(Model.Description)');
+
+
+
+        });
+
+        $("#btnSubmit").click(function () {
+            debugger;
+            var description = $(".Editor-editor").html();
+            $("#EditorText").val(description);
+        });
+
+    </script>
+</body>
+</html>

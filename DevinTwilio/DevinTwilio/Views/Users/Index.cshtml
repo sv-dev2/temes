@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DevinTwilio.Models.UserViewModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<hr/>
+<h3>Patients</h3>
+
+<hr />
+<p>
+    @Html.ActionLink("Create Patient", "Register", new { href = Request.UrlReferrer })
+</p>
+
+<table class="table table-striped" id="PatientData">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Name") <i class="fa fa-fw fa-sort"></i>
+            </th>
+
+            <th>
+                @Html.DisplayName("Phone Number") <i class="fa fa-fw fa-sort"></i>
+            </th>
+            <th>
+                @Html.DisplayName("Last Message") <i class="fa fa-fw fa-sort"></i>
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NextAppointment) <i class="fa fa-fw fa-sort"></i>
+            </th> 
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentDate) <i class="fa fa-fw fa-sort"></i>
+            </th>
+            <th>@Html.DisplayNameFor(model => model.CreatedDate) <i class="fa fa-fw fa-sort"></i></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastMessage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NextAppointment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new {  id=item.User_ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var table = $('#PatientData').DataTable();
+
+            // Sort by column 1 and then re-draw
+            table
+                .order([5, 'desc'])
+                .draw();
+            table.column(5).visible(false);
+            //$('#PatientData').DataTable();
+        });
+
+    </script>
+}

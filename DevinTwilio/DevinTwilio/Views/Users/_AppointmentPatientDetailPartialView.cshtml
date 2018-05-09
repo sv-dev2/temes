@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DevinTwilio.Models.AppointmentViewModels>
+@{
+    ViewBag.Title = "Index";
+}
+
+<a href="~/Appointment/Create"><h2>Appointments (+) </h2></a>
+
+<table class="table table-striped" id="AppointmentData">
+        <tr>
+            <th>
+                @Html.DisplayName("Type")
+            </th>
+            <th>
+                @Html.DisplayName("Provider")
+            </th>
+            <th>
+                @Html.DisplayName("Start")
+            </th>
+            <th>
+                @Html.DisplayName("End")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+          <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProviderName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+          </tr>
+        }
+   
+</table>
+
+
+
+

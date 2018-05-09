@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DevinTwilio.Models.SMSReplyViewModels>
+@{
+    ViewBag.Title = "Message Tree";
+    Layout = null;
+}
+<hr/>
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@if (TempData["successMessage"] != null)
+{
+    <div class="alert alert-success msgbox">
+        <strong>@TempData["successMessage"]</strong>
+    </div>
+}
+
+@if (TempData["errorMessage"] != null)
+{
+    <div class="alert alert-danger msgbox">
+        <strong>@TempData["errorMessage"] </strong>
+    </div>
+}
+
+<table class="table" id="Messages">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("User")
+            </th>
+            <th>
+                @Html.DisplayName("Message ID")
+            </th>
+            <th>
+                @Html.DisplayName("Message")
+            </th>
+            <th>
+                @Html.DisplayName("From")
+            </th>
+            <th>
+                @Html.DisplayName("To")
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+            <th>
+                @Html.DisplayName("Response")
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MessageId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.From)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.To)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SmsStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MessageResponse)
+                </td>
+               
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#Messages').DataTable();
+        });
+
+        $(document).ready(function () {
+            // setTimeout() function will be fired after page is loaded
+            // it will wait for 5 sec. and then will fire
+            // $("#successMessage").hide() function
+            setTimeout(function () {
+                $(".msgbox").hide('blind', {}, 600)
+            }, 5000);
+        });
+
+    </script>
+}
+
+

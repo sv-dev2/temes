@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Custom.css" rel="stylesheet" />
+
+
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top nav_bar_design">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("TeMeS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @{
+                        var RoleName = "";
+                        if (Session["loggedUser"] != null)
+                        {
+                            <li>@Html.ActionLink("Log", "Logs", "Users")</li>
+                            //var user = (DevinTwilio.Models.UserViewModels)Session["loggedUser"];
+                            //RoleName = user.RoleName;
+                            <li>@Html.ActionLink("Patients", "Index", "Users")</li>
+                            <li>@Html.ActionLink("Appointments", "Index", "Appointment")</li>
+                            @*<li>@Html.ActionLink("Message Tree", "MessageTree", "Home")</li>*@
+
+                            <li>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        Settings
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="~/Home/Index">Messages</a>
+                                        <a class="dropdown-item" href="~/Provider/Index">Providers</a>
+                                        <a class="dropdown-item" href="~/Users/Users">Users</a>
+                                        <a class="dropdown-item" href="~/TriggerEvent/Index">Event</a>
+                                        <a class="dropdown-item" href="~/Home/DashboardText">Home Page Text</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Text Message Support (TeMeS)</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryValidation")
+    
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+
+</body>
+</html>

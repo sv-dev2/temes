@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DevinTwilio.Models.EnrollmentDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Next Messages (Enrollment Date)</h2>
+
+<table class="table table-striped" id="SentMessageDataNext">
+    <thead>
+        <tr>
+            <th width="90px">
+                @Html.DisplayName("Time Scheduled")
+            </th>
+            <th>
+                @Html.DisplayName("ID")
+            </th>
+            <th>
+                @Html.DisplayName("Message")
+            </th>
+            <th colspan="3">
+               Actions
+            </th>       
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td width="90px">
+                        @item.EnrollmentMessageDate
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MessageID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+
+
+                    <td>
+                        @Html.ActionLink("Send Now", "AddUserEnrollment", new { userId= item.User_ID, enrollmentId = item.TriggerEventId, actionToDo = "Send" })                 
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Skip", "AddUserEnrollment", new { userId = item.User_ID, enrollmentId = item.TriggerEventId, actionToDo = "Skip" })
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Pause", "AddUserEnrollment", new { userId = item.User_ID, enrollmentId = item.TriggerEventId, actionToDo = "Pause" })
+                    </td>
+
+
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+

@@ -1,0 +1,114 @@
+﻿@model DevinTwilio.Models.UserViewModels
+@{
+    ViewBag.Title = "Register Patient";
+}
+<hr />
+<p>
+    @Html.ActionLink("Back To List", "Index")
+</p>
+
+<link href="~/Datepicker/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Datepicker/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Register", "Users", FormMethod.Post, new { @class = "form-horizontal register-form", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h2 class="create-title">@ViewBag.Title.</h2>
+    <h4 class="create-account">Create a new patient account.</h4>
+    <hr />
+
+    if (TempData["successMsg"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>@TempData["successMsg"]</strong>.
+        </div>
+    }
+
+    if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-warning">
+            <strong>@TempData["ErrorMessage"] </strong>
+        </div>
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.User_Name, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.User_Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.User_Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.EmailAddress, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+    
+        @Html.LabelFor(m => m.MobileNumber, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control", placeholder = "xxx-xxx-xxxx" })
+            @Html.ValidationMessageFor(m => m.MobileNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.RoleName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(M => M.Role_Id, new SelectList(Model.Roles, "Role_Id", "Role_Name"))
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.EnrollmentDate, new { @class = "col-md-4 control-label" })
+        <div class="input-group date col-md-7" id="divEnrollmentDate">
+            <input type="text" name="EnrollmentDate" id="EnrollmentDate" class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Notes, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.TextAreaFor(m => m.Notes, new
+       {
+           @class = "form-control",
+           rows = "2",
+           cols = "20"
+       })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+            <input type="submit" class="btn btn-default" value="Create Patient" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>*@
+
+<script src="~/Datepicker/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Datepicker/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="~/Datepicker/bootstrap/js/bootstrap-datetimepicker.fr.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            //$('#divEnrollmentDate').datetimepicker();
+        });
+        $('#divEnrollmentDate').datetimepicker();
+    </script>
+
+}

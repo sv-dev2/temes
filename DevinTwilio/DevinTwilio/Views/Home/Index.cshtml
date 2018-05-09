@@ -1,0 +1,145 @@
+﻿
+@model IEnumerable<DevinTwilio.Models.ScheduleViewModels>
+
+@{
+    ViewBag.Title = "Schedule Messages Page";
+}
+<h3>Messages</h3>
+<p>
+  @Html.ActionLink("Add Message", "Create", "Home")
+</p>
+
+<style>
+    .a_Active{color:#2a6496 !important}
+    #divEventSearch {
+      margin-left:200px;
+    }
+</style>
+<hr />
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@if (TempData["successMessage"] != null)
+{
+    <div class="alert alert-success msgbox">
+        <strong>@TempData["successMessage"]</strong>
+    </div>
+}
+
+@if (TempData["errorMessage"] != null)
+{
+    <div class="alert alert-danger msgbox">
+        <strong>@TempData["errorMessage"] </strong>
+    </div>
+}
+
+<div id="divEventSearch">
+    <input type="text" id="txtSearchEvent" placeholder="Search Event" />
+</div>
+
+<table class="table table-striped" id="MessagesData">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("ID")
+            </th>
+            <th>
+                @Html.DisplayName("Message")
+            </th>
+            <th>
+                @Html.DisplayName("Type")
+            </th>
+            <th>
+                @Html.DisplayName("Event")
+            </th>
+
+            <th>Appointment Schedule</th>
+          
+            <th>
+          @Html.DisplayName("Sent Date")
+            </th>
+            <th>
+                @Html.DisplayName("Last Sent To")
+            </th>
+            <th>
+                @Html.DisplayName("If 1")
+            </th>
+            <th>
+                @Html.DisplayName("If 2")
+            </th>
+           
+            <th></th>
+         
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@item.DisplayMessageID.ToString(), "MessageDetails", new { id = item.ScheduleMessageID }, new { @class = "a_Active" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TriggerTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TriggerEventDay)
+                </td>
+                <td> @Html.DisplayFor(modelItem => item.Day) </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem=>item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.If1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.If2)
+                </td>
+                
+                <td>
+                    @Html.ActionLink("Edit", "AddOrEdit", new { id = item.ScheduleMessageID }) |
+                    @Html.ActionLink("Delete", "DeleteMessage", new { id = item.ScheduleMessageID }, new { onclick = "return confirm('Are you sure you want to delete?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            // DataTable
+            var messageTable = $('#MessagesData').DataTable();
+            //messageTable.order(3, "desc").draw();
+            // Apply the search
+            messageTable.columns().each(function () {
+                var that = this;
+                $('#txtSearchEvent').on('keyup change', function () {
+                    if (that.search() != this.value) {
+                        that.columns(2).search(this.value).draw();
+                    }
+                });
+            });
+
+            //  $('#MessagesData').DataTable();
+
+        });
+
+        $(document).ready(function () {
+            // setTimeout() function will be fired after page is loaded
+            // it will wait for 5 sec. and then will fire
+            // $("#successMessage").hide() function
+            setTimeout(function () {
+                $(".msgbox").hide('blind', {}, 600)
+            }, 5000);
+        });
+
+    </script>
+}

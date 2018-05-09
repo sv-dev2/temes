@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DevinTwilio.Models.UserViewModels>
+
+<div class="row">
+    <h4> <span style="margin-left:20px;"> @ViewBag.Patientname </span>  <a style="margin-left:3px;" href="/Users/Details/@ViewBag.PatientId "> Patient Profile</a> </h4>
+
+</div>
+<br />
+<table class="table table-striped" id="LogDetailData">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Message") 
+            </th>
+            <th>
+                @Html.DisplayName("Sent Date")
+            </th>
+            <th>
+                @Html.DisplayName("Response")
+            </th>
+
+            <th style="min-width:50px;">
+                @Html.DisplayName("Response Date")
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.ToList().Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td width="400px">
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Response)
+                    </td>
+                    <td> @Html.DisplayFor(modelItem => item.ResponseDate) </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td></td>
+                <td> <h2>Log not found for selected patient.</h2></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>

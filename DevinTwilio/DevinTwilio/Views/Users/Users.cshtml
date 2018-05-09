@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DevinTwilio.Models.UserViewModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Users</h2>
+<hr/>
+<p>
+    @Html.ActionLink("Create New", "Register", new { href = Request.UrlReferrer })
+</p>
+
+<table class="table table-striped" id="uListData">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User_Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th>
+                Created On
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+                <td> @Html.DisplayFor(modelItem => item.CreatedDate) </td>
+                <td> @Html.DisplayFor(modelItem => item.CreatedDate) </td>
+                <td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.User_ID })
+                </td>
+                 <td>
+                    @Html.ActionLink("Edit", "AddOrEdit", new { id = item.User_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.User_ID }, new { onclick = "return confirm('Are you sure you want to delete?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#uListData').DataTable({
+                "order": [[3, "desc"]]
+            });
+        });
+      
+    </script>
+}

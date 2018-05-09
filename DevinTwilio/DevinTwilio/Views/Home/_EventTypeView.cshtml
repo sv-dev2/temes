@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DevinTwilio.Models.EventViewModels>
+
+<h3>Events Types</h3>
+<hr />
+<p>
+    @Html.ActionLink("Create New", "CreateEventType")
+</p>
+<table class="table table-striped" id="EventData">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Event Name")
+            </th>
+            <th> @Html.DisplayName("Event Type")</th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.TriggerTypeName)</td>
+                <td>
+                    @Html.ActionLink("Edit", "AddOrEditTriggerEvent", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteTriggerEvent", new { id = item.Id }, new { onclick = "return confirm('Are you sure you want to delete?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#EventData').DataTable();
+        });
+    </script>
+}
+
+

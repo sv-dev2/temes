@@ -1,0 +1,45 @@
+Inside SMS Reply function at 2/6/2018 12:58:39 PM
+From = +917986501164
+_body = 1
+To = +16467591379
+MessagesSid = SM1eecba9f137343d2aacca540c5710752
+Outside main code at _toNumber = +917986501164_body = 1_fromNumber = +16467591379MessagesSid = SM1eecba9f137343d2aacca540c5710752
+Inside dbResult at 2/6/2018 12:59:30 PM
+dbResult MessageResponse One
+messageToBeSentIf1 Testifying the if1 message, this looks okay, it means second response is okay.
+messageToBeSentIf2 
+Inside Request Body 1 Block response (Before Creating Message)  at 2/6/2018 1:00:58 PM
+to = +917986501164From = +16467591379body = Testifying the if1 message, this looks okay, it means second response is okay.at 2/6/2018 1:00:59 PM
+Inside Request Body 1 Block response (After Creating Message)  at 2/6/2018 1:01:08 PM
+Inside SMS Reply function at 2/6/2018 1:11:45 PM
+From = +91798650
+_body = 1
+To = +16467591379
+MessagesSid = SM1eecba9f137343d2aacca540c5710752
+Outside main code at _toNumber = +91798650_body = 1_fromNumber = +16467591379MessagesSid = SM1eecba9f137343d2aacca540c5710752
+messageToBeSentIf1 
+messageToBeSentIf2 
+Inside Request Body 1 Block response (Before Creating Message)  at 2/6/2018 1:13:03 PM
+to = +91798650From = +16467591379body = Invalid requestat 2/6/2018 1:13:03 PM
+Inside Request Body 1 Block response (After Creating Message)  at 2/6/2018 1:13:06 PM
+Inside SMS Reply function at 2/6/2018 1:33:02 PM
+From = 
+_body = 
+To = 
+MessagesSid = 
+Outside main code at _toNumber = _body = _fromNumber = MessagesSid = 
+messageToBeSentIf1 
+messageToBeSentIf2 
+Inside SMS Reply function at 2/6/2018 1:39:29 PM
+From = +917986501164
+_body = 2
+To = +16467591379
+MessagesSid = SM1eecba9f137343d2aacca540c5710752
+Outside main code at _toNumber = +917986501164_body = 2_fromNumber = +16467591379MessagesSid = SM1eecba9f137343d2aacca540c5710752
+Inside dbResult at 2/6/2018 1:40:32 PM
+dbResult MessageResponse Two
+messageToBeSentIf1 Testifying the if1 message, this looks okay, it means second response is okay.
+messageToBeSentIf2 Testifying the if2 message, this looks okay, it means second response is okay.
+Inside Request Body 2 Block response (Before Creating Message)  at 2/6/2018 1:40:56 PM
+to = +917986501164From = +16467591379body = Testifying the if2 message, this looks okay, it means second response is okay.at 2/6/2018 1:40:56 PM
+Inside Request Body 2 Block response (After Creating Message)  at 2/6/2018 1:41:02 PM

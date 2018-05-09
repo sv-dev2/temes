@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Patient Profile";
+}
+
+<div class="patient-page">
+    <h2>Patient Profile</h2>
+
+    <div class="row">
+        <div class="col-md-5 border-right">
+            <div id="PatientDetail">
+                @{Html.RenderAction("_PatientDetailPartialView", new { id = ViewBag.ID }); }
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div id="AppointmentPatientDetail">
+                @{Html.RenderAction("_AppointmentPatientDetailPartialView", new { @id = ViewBag.ID });}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="SentMessagesPatientDetail">
+                @{Html.RenderAction("_SentMessagesPatientDetailPartialView", new { @id = ViewBag.ID });}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="NextMessagesPatientDetail">
+                @{Html.RenderAction("_NextMessagesPatientDetailPartialView", new { @id = ViewBag.ID });}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="NextMessagesPatientDetail">
+                @{Html.RenderAction("_NextMessagesPatientAppointmentDetailPartialView", new { @id = ViewBag.ID });}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#SentMessageDataDetail').DataTable();
+            $('#SentMessageDataNext').DataTable();
+            $('#SentMessageDataAppointment').DataTable();
+        });
+    </script>
+}

@@ -1,0 +1,221 @@
+﻿@model DevinTwilio.Models.ScheduleViewModels
+@{
+    ViewBag.Title = "Create";
+}
+
+<link href="~/Content/jquery.timepicker.css" rel="stylesheet" />
+
+<h3>Edit Schedule Message</h3>
+<p>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</p>
+
+@using (Html.BeginForm("AddOrEdit", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @if (TempData["successMessage"] != null)
+                {
+            <div class="alert alert-success msgbox">
+                <strong>@TempData["successMessage"]</strong>
+            </div>
+        }
+        @if (TempData["errorMessage"] != null)
+                {
+            <div class="alert alert-danger msgbox">
+                <strong>@TempData["errorMessage"] </strong>
+            </div>
+        }
+        @Html.HiddenFor(m => m.ScheduleMessageID)
+
+
+
+
+
+        <div class="form-group">
+            @Html.Label("Message", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Event Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(M => M.TriggerTypeId, new SelectList(ViewBag.TriggerTypes, "Value", "Text"), "-Select-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TriggerTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="divDay">
+
+
+            <div id="display_day" style="display:none">
+                @Html.Label("Day", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+
+            <div id="display_Event">
+                @Html.Label("Event", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+
+
+
+            <div class="col-md-10">
+                @*@Html.DropDownListFor(model => model.TriggerEventId, ViewBag.TriggerEvents as IEnumerable<SelectListItem>, "Select Trigger Event", new { @class = "form-control" })*@
+              
+                @Html.DropDownListFor(model => model.TriggerEventId, new List<SelectListItem>(), "Select Event", new { @class = "form-control" })
+                  @Html.ValidationMessageFor(m => m.TriggerEventId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="divAptDay" class="form-group">
+            @Html.Label("Schedule day", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Day, new { @class = "form-control", style = "width:115px;", @pattern="[0-9]" })
+            </div>
+        </div>
+
+        <div class="form-group" id="divTime">
+            @Html.Label("Time", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Time, new { @class = "form-control timepicker",  style = "width:115px; overflow: scroll" })
+                @Html.ValidationMessageFor(m => m.FrequencyOfDelivery, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        @*<div class="form-group">
+            @Html.Label("Trigger", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TriggerId, ViewBag.Triggers as IEnumerable<SelectListItem>, "Select Trigger", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TriggerId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.Label("If 1", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.If1, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.If1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("If 2", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.If2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.If2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update Schedule Message" class="btn btn-success" />
+            </div>
+        </div>
+
+    </div>
+}
+
+@section Scripts {
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-timepicker.js"></script>
+    <script type="text/javascript">
+        $('.timepicker').timepicker();
+        $(document).ready(function () {
+            var eventId = $("#TriggerTypeId").val();
+            BindTriggerEvent(eventId);
+
+            if ($("#TriggerTypeId option:selected").text() == "Response")
+            {
+                $("#divTime").hide();
+                $("#divDay").hide();
+                $("#divAptDay").hide();
+            }
+            else
+            {
+                $("#divDay").show();
+                $("#divTime").show();
+            }
+            HideAndShowEventDay();
+
+          
+               
+                $('#TriggerEventId').val('@Model.TriggerEventId');
+           
+        });
+
+        $(function () {
+            // setTimeout() function will be fired after page is loaded
+            // it will wait for 5 sec. and then will fire
+            // $("#successMessage").hide() function
+            setTimeout(function () {
+                $(".msgbox").hide('blind', {}, 500)
+            }, 5000);
+        });
+
+        function BindTriggerEvent(eventId) {
+            debugger;
+            $.ajax({
+                data: { id: eventId },
+                url: '/Home/BindTriggerEventDropDown',
+                type: 'post',
+                async:false,
+                success: function (data) {
+
+                    $("#TriggerEventId option").remove();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#TriggerEventId").append($("<option></option>").val(data[i].Value).html(data[i].Text));
+                    }
+                },
+                error: function () {
+
+                }
+            })
+        }
+
+        $("#TriggerTypeId").on("change", function () {
+            debugger;
+            var eventId = $("#TriggerTypeId").val();
+
+            if ($("#TriggerTypeId option:selected").text() == "Response")
+            {
+                $("#divTime").hide();
+                $("#divDay").hide();
+                $("#divAptDay").hide();
+            }
+            else
+            {
+
+                $("#divDay").show();
+                $("#divTime").show();
+                BindTriggerEvent(eventId);
+            }
+            HideAndShowEventDay();
+        })
+
+
+        function HideAndShowEventDay() {
+            if ($("#TriggerTypeId option:selected").text() == "Appointment") {
+                $("#display_day").hide();
+                $("#display_Event").show();
+                $("#divAptDay").show();
+            }
+            else if ($("#TriggerTypeId option:selected").text() == "Enrollment") {
+                $("#display_day").show();
+                $("#display_Event").hide();
+                $("#divAptDay").hide();
+            }
+        }
+
+
+
+    </script>
+}
+
+

@@ -1,0 +1,108 @@
+﻿@model DevinTwilio.Models.UserViewModels
+@{
+    ViewBag.Title = "Logs";
+}
+<h2>Logs</h2>
+<style>
+    .activeClass {
+        background:#d3d3d3;
+    }
+</style>
+<br />
+<div class="row">
+    <div class="col-md-3 border-right">
+        @Html.HiddenFor(m => m.User_ID)
+        <table class="table" id="LogsData">
+                <tr>
+                    <th>
+                        @Html.DisplayName("Patients")
+                    </th>
+                </tr>
+                @foreach (var item in Model.UsesList)
+                {
+                    <tr>
+                        <td class="ChangeClass">
+                          <span>@item.User_Name </span> 
+                            <input type="hidden" class="selected_user" value="@item.User_ID" />
+                        </td>                      
+                    </tr>
+                }
+        </table>
+        @*<div class="form-group">
+            @Html.LabelFor(m => m.User_Name, new { @class = "col-md-3 control-label" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(m => m.User_ID, new SelectList(Model.UsesList, "User_ID", "User_Name"), "-Select-", new { @class = "form-control ChangeClass" })
+                @Html.ValidationMessageFor(m => m.User_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    </div>
+    <div class="col-md-9">
+        <div id="divLogDetailsPartial"></div>
+    </div>
+</div>
+
+@*<div class="row">
+        <div class="col-md-12">
+            @{Html.RenderAction("MessageTree", "Home");}
+        </div>
+</div>*@
+
+@section Scripts {
+    <script type="text/javascript">
+
+        //$(document).ready(function () {
+         //   $('#LogDetailData').DataTable();
+      //  });
+
+        $(document).ready(function () {
+            $("#LogsData tr td:first").trigger('click', function () {
+                $(".ChangeClass").removeClass("activeClass");
+                $(this).addClass("activeClass");
+                var patientname = $(this).find('span').html();
+                var userId = $(this).find('.selected_user').val();
+          
+                if (patientname != "") {
+                    $.ajax({
+                        url: "@Url.Action("_LogsDetailByPatientPartialView", "Users")",
+                        data: { patientname: patientname, userId: userId },
+                    type: "Get",
+                    dataType: "html",
+                    success: function (data) {
+                        //Whatever result you have got from your controller with html partial view replace with a specific html.
+                        $("#divLogDetailsPartial").html(data); // HTML DOM replace
+                        $('#LogDetailData').DataTable();
+                    }
+                });
+            }
+            });
+        });
+
+      
+        $(".ChangeClass").on('click', function () {
+            $(".ChangeClass").removeClass("activeClass");
+            $(this).addClass("activeClass");
+            var patientname = $(this).find('span').html();
+
+            var userId = $(this).find('.selected_user').val();
+           
+
+            if (patientname != "") {
+                $.ajax({
+                    url: "@Url.Action("_LogsDetailByPatientPartialView", "Users")",
+                    data: { patientname: patientname  , userId: userId },
+                    type: "Get",
+                    dataType: "html",
+                    success: function (data) {
+                        debugger;
+                        //Whatever result you have got from your controller with html partial view replace with a specific html.
+                        $("#divLogDetailsPartial").html(data); // HTML DOM replace
+                        $('#LogDetailData').DataTable();
+                    }
+                });
+            }
+        });
+
+    </script>
+}
+
+

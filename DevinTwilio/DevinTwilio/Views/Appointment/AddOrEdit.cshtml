@@ -1,0 +1,147 @@
+﻿@model DevinTwilio.Models.AppointmentViewModels
+
+<link href="~/Datepicker/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Datepicker/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+<div class="container body-content">
+    <h4>Edit appointment.</h4>
+    @using (Html.BeginForm("AddOrEdit", "Appointment", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        if (TempData["successMsg"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["successMsg"]</strong>.
+            </div>
+        }
+        if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning">
+                <strong>@TempData["ErrorMessage"] </strong>
+            </div>
+        }
+        <hr />
+            @Html.HiddenFor(m => m.AppointmentID)
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(M => M.UserId, new SelectList(Model.UsesList, "User_ID", "User_Name"), "-Select-", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProviderName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(M => M.ProviderId, new SelectList(Model.ProviderList, "ProviderId", "ProviderName"), "-Select-", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ProviderId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.EventName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(M => M.Appointment_Trigger_EventId, new SelectList(Model.AppointmentEventList, "TriggerEvent_ID", "TriggerEvent_Day"), "-Select-", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Appointment_Trigger_EventId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.StartTime, new { @class = "col-md-2 control-label" })
+                <div class="input-group date form_datetime col-md-4" data-link-field="dtp_input1">
+                    @Html.TextBoxFor(m => m.StrStartTime, new { @class = "form-control" })
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" id="dtp_input1" value="" /><br />
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.Description, new
+                   {
+                       @class = "form-control",
+                       rows = "4",
+                       cols = "20"
+                   })
+                </div>
+            </div>
+
+                @*<div class="form-group">
+                        @Html.LabelFor(m => m.EndTime, new { @class = "col-md-2 control-label" })
+                        <div class="input-group date form_time col-md-4" data-date="" data-date-format="HH:ii p" data-link-field="dtp_input3" data-link-format="hh:ii">
+
+                            @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control" })
+                              <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                        </div>
+                        <input type="hidden" id="dtp_input3" value="" /><br />
+                    </div>*@
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-success" value="Update" />
+                    </div>
+                </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/Datepicker/jquery/jquery-1.8.3.min.js"></script>
+    <script src="~/Datepicker/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Datepicker/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="~/Datepicker/bootstrap/js/bootstrap-datetimepicker.fr.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            @*$("#StartTime").val('');
+            $("#StartTime").val('@Model.StrStartTime');*@
+        });
+
+        $(".form_datetime").datetimepicker({
+            "setDate": new Date(),
+            dateFormat: "dd-mm-yy",
+            timeFormat: "HH:mm:ss"
+        });
+
+        //$(".form_datetime").datetimepicker({
+        //    format: "DD-MM-YYYY hh:mm"
+        //});
+        //  format: "DD-MM-YYYY hh:mm",
+        //$('.form_datetime').datetimepicker({
+        //    //language:  'fr',
+        //    weekStart: 1,
+        //    todayBtn: 1,
+        //    autoclose: 1,
+        //    todayHighlight: 1,
+        //    startView: 2,
+        //    forceParse: 0,
+        //    showMeridian: 1
+        //});
+        //$('.form_datetime').datetimepicker({
+        //   // language: 'fr',
+        //    weekStart: 1,
+        //    todayBtn: 1,
+        //    autoclose: 1,
+        //    todayHighlight: 1,
+        //    startView: 2,
+        //    minView: 2,
+        //    forceParse: 0
+        //});
+        //$('.form_time').datetimepicker({
+        //    // language: 'eng',
+        //    weekStart: 1,
+        //    todayBtn: 1,
+        //    autoclose: 1,
+        //    todayHighlight: 1,
+        //    startView: 1,
+        //    minView: 0,
+        //    maxView: 1,
+        //    forceParse: 0
+        //});
+    </script>
+}

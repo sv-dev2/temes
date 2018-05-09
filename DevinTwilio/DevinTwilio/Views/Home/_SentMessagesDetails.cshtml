@@ -1,0 +1,70 @@
+﻿
+@model IEnumerable<DevinTwilio.Models.SMSReplyViewModels>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+
+}
+<h2>Sent Messages</h2>
+
+<table class="table table-striped" id="SentMessageDetail">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("ID")
+            </th>
+            <th>
+                @Html.DisplayName("Message")
+            </th>
+            <th>
+                @Html.DisplayName("Date")
+            </th>
+            <th>
+                @Html.DisplayName("Type")
+            </th>
+            <th>
+                @Html.DisplayName("Send to")
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+            <th>
+                @Html.DisplayName("Response")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MessageId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.To)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SmsStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MessageResponse)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+

@@ -1,0 +1,118 @@
+﻿
+@model IEnumerable<DevinTwilio.Models.AppointmentViewModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+      #divAppointmentSearch {
+      margin-left:200px;
+    }
+</style>
+
+<h3>Appointments</h3>
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div id="divAppointmentSearch">
+    <input type="text" id="txtSearchUserName" placeholder="Search User Name" />
+    <input type="text" id="txtSearchProviderName" placeholder="Search Provider Name" />
+</div>
+<table class="table table-striped display" id="AppointmentData">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Id")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProviderName)
+            </th>
+            <th>
+                Event
+            </th>
+            <th>@Html.DisplayName("Description")</th>
+            <th>@Html.DisplayNameFor(model => model.StartTime)</th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProviderName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TriggerEventDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "AddOrEdit", new { id = item.AppointmentID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AppointmentID }, new { onclick = "return confirm('Are you sure you want to delete?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // DataTable
+            var appoinTable = $('#AppointmentData').DataTable();
+
+            appoinTable.order([5, "desc"]).draw();
+            // Apply the search
+            appoinTable.columns().each(function () {
+                var that = this;
+
+                $('#txtSearchUserName').on('keyup change', function () {
+                    if (that.search() != this.value) {
+                        that.columns(1).search(this.value).draw();
+                     
+                    }
+                });
+                $('#txtSearchProviderName').on('keyup change', function () {
+                    if (that.search() != this.value) {
+                        that.columns(2).search(this.value).draw();
+                    }
+                });
+
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+

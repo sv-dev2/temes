@@ -1,0 +1,697 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DevinTwilioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Appointment_ID" />
+          </Key>
+          <Property Name="Appointment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Appointment_PatientID" Type="int" />
+          <Property Name="Appointment_ProviderID" Type="int" />
+          <Property Name="Appointment_Trigger_EventId" Type="int" />
+          <Property Name="Appointment_Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Appointment_StartTime" Type="datetime" />
+          <Property Name="Appointment_EndTime" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AppointmentProvider">
+          <Key>
+            <PropertyRef Name="AppointmentProvider_ID" />
+          </Key>
+          <Property Name="AppointmentProvider_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppointmentProvider_Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="AppointmentType">
+          <Key>
+            <PropertyRef Name="AppointmentType_ID" />
+          </Key>
+          <Property Name="AppointmentType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppointmentType_Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="DashboardText">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Message_ID" />
+          </Key>
+          <Property Name="Message_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message_Messages" Type="nvarchar" MaxLength="500" />
+          <Property Name="Message_TriggerTypeID" Type="int" />
+          <Property Name="Message_TriggerEventID" Type="int" />
+          <Property Name="Message_TriggerID" Type="int" />
+          <Property Name="Message_Time" Type="nvarchar" MaxLength="100" />
+          <Property Name="Message_FrequencyOfDelivery" Type="nvarchar" MaxLength="200" />
+          <Property Name="Message_If1" Type="nvarchar" MaxLength="200" />
+          <Property Name="Message_If2" Type="nvarchar" MaxLength="200" />
+          <Property Name="Message_OtherNotes" Type="nvarchar" MaxLength="500" />
+          <Property Name="Message_TimesSent" Type="nvarchar" MaxLength="200" />
+          <Property Name="Message_MMDomainID" Type="int" />
+          <Property Name="Message_MMSubDomainID" Type="int" />
+          <Property Name="Message_StageInTXID" Type="int" />
+        </EntityType>
+        <EntityType Name="MMDomain">
+          <Key>
+            <PropertyRef Name="MMDomain_ID" />
+          </Key>
+          <Property Name="MMDomain_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MMDomain_Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="MMSubDomain">
+          <Key>
+            <PropertyRef Name="MMSubDomain_ID" />
+          </Key>
+          <Property Name="MMSubDomain_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MMSubDomain_Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="ProviderId" />
+          </Key>
+          <Property Name="ProviderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProviderName" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="ContactName" Type="varchar" MaxLength="100" />
+          <Property Name="ContactEmail" Type="varchar" MaxLength="50" />
+          <Property Name="ContactPhone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="int" Nullable="false" />
+          <Property Name="Role_Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ScheduleMessage">
+          <Key>
+            <PropertyRef Name="ScheduleMessage_ID" />
+          </Key>
+          <Property Name="ScheduleMessage_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduleMessage_Message" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ScheduleMessage_TriggerTypeID" Type="int" />
+          <Property Name="ScheduleMessage_TriggerEventID" Type="int" />
+          <Property Name="ScheduleMessage_TriggerID" Type="int" />
+          <Property Name="ScheduleMessage_StartTime" Type="datetime2" Precision="7" />
+          <Property Name="ScheduleMessage_EndTime" Type="datetime2" Precision="7" />
+          <Property Name="ScheduleMessage_FrequencyOfDelivery" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ScheduleMessage_If1" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ScheduleMessage_If2" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ScheduleMessage_OtherNotes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ScheduleMessage_TimesSent" Type="nvarchar" MaxLength="100" />
+          <Property Name="ScheduleMessage_MMDomainID" Type="int" />
+          <Property Name="ScheduleMessage_MMSubDomainID" Type="int" />
+          <Property Name="ScheduleMessage_Time" Type="nvarchar" MaxLength="100" />
+          <Property Name="Display_MessageId" Type="int" />
+          <Property Name="Appointment_Schedule" Type="int" />
+        </EntityType>
+        <EntityType Name="SmsReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sid" Type="nvarchar(max)" />
+          <Property Name="From" Type="nvarchar(max)" />
+          <Property Name="To" Type="nvarchar(max)" />
+          <Property Name="ParentSid" Type="int" />
+          <Property Name="MessageId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MessageResponse" Type="varchar" MaxLength="50" />
+          <Property Name="SmsStatus" Type="varchar" MaxLength="50" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="ResponseDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StageInTX">
+          <Key>
+            <PropertyRef Name="StageInTX_ID" />
+          </Key>
+          <Property Name="StageInTX_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StageInTX_Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Trigger">
+          <Key>
+            <PropertyRef Name="Trigger_ID" />
+          </Key>
+          <Property Name="Trigger_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Trigger_Trigger" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TriggerEvent">
+          <Key>
+            <PropertyRef Name="TriggerEvent_ID" />
+          </Key>
+          <Property Name="TriggerEvent_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TriggerTypeId" Type="int" />
+          <Property Name="TriggerEvent_Day" Type="varchar" MaxLength="50" />
+          <Property Name="TriggerEvent_Event" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TriggerType">
+          <Key>
+            <PropertyRef Name="TriggerType_ID" />
+          </Key>
+          <Property Name="TriggerType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TriggerType_Type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="100" />
+          <Property Name="Role_Id" Type="int" />
+          <Property Name="User_PhoneNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EnrollmentDate" Type="datetime" />
+          <Property Name="LastLoggedIn" Type="datetime" />
+          <Property Name="StatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserEnrollment">
+          <Key>
+            <PropertyRef Name="UserEnrollmentId" />
+          </Key>
+          <Property Name="UserEnrollmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TriggerEventId" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserStatus">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ScheduleMessage_TriggerType">
+          <End Role="TriggerType" Type="Self.TriggerType" Multiplicity="0..1" />
+          <End Role="ScheduleMessage" Type="Self.ScheduleMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TriggerType">
+              <PropertyRef Name="TriggerType_ID" />
+            </Principal>
+            <Dependent Role="ScheduleMessage">
+              <PropertyRef Name="ScheduleMessage_TriggerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DevinTwilioModelStoreContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppointmentProvider" EntityType="Self.AppointmentProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppointmentType" EntityType="Self.AppointmentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DashboardText" EntityType="Self.DashboardText" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MMDomain" EntityType="Self.MMDomain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MMSubDomain" EntityType="Self.MMSubDomain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScheduleMessage" EntityType="Self.ScheduleMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmsReply" EntityType="Self.SmsReply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StageInTX" EntityType="Self.StageInTX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trigger" EntityType="Self.Trigger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TriggerEvent" EntityType="Self.TriggerEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TriggerType" EntityType="Self.TriggerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserEnrollment" EntityType="Self.UserEnrollment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStatus" EntityType="Self.UserStatus" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ScheduleMessage_TriggerType" Association="Self.FK_ScheduleMessage_TriggerType">
+            <End Role="TriggerType" EntitySet="TriggerType" />
+            <End Role="ScheduleMessage" EntitySet="ScheduleMessage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DevinTwilioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Appointment_ID" />
+          </Key>
+          <Property Name="Appointment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Appointment_PatientID" Type="Int32" />
+          <Property Name="Appointment_ProviderID" Type="Int32" />
+          <Property Name="Appointment_Trigger_EventId" Type="Int32" />
+          <Property Name="Appointment_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Appointment_StartTime" Type="DateTime" Precision="3" />
+          <Property Name="Appointment_EndTime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AppointmentProvider">
+          <Key>
+            <PropertyRef Name="AppointmentProvider_ID" />
+          </Key>
+          <Property Name="AppointmentProvider_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppointmentProvider_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AppointmentType">
+          <Key>
+            <PropertyRef Name="AppointmentType_ID" />
+          </Key>
+          <Property Name="AppointmentType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppointmentType_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DashboardText">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Message_ID" />
+          </Key>
+          <Property Name="Message_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message_Messages" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Message_TriggerTypeID" Type="Int32" />
+          <Property Name="Message_TriggerEventID" Type="Int32" />
+          <Property Name="Message_TriggerID" Type="Int32" />
+          <Property Name="Message_Time" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Message_FrequencyOfDelivery" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Message_If1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Message_If2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Message_OtherNotes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Message_TimesSent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Message_MMDomainID" Type="Int32" />
+          <Property Name="Message_MMSubDomainID" Type="Int32" />
+          <Property Name="Message_StageInTXID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MMDomain">
+          <Key>
+            <PropertyRef Name="MMDomain_ID" />
+          </Key>
+          <Property Name="MMDomain_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MMDomain_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MMSubDomain">
+          <Key>
+            <PropertyRef Name="MMSubDomain_ID" />
+          </Key>
+          <Property Name="MMSubDomain_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MMSubDomain_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="ProviderId" />
+          </Key>
+          <Property Name="ProviderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <Property Name="Role_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SmsReply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="From" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="To" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentSid" Type="Int32" />
+          <Property Name="MessageId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MessageResponse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SmsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="ResponseDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="StageInTX">
+          <Key>
+            <PropertyRef Name="StageInTX_ID" />
+          </Key>
+          <Property Name="StageInTX_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StageInTX_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Trigger">
+          <Key>
+            <PropertyRef Name="Trigger_ID" />
+          </Key>
+          <Property Name="Trigger_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Trigger_Trigger" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Role_Id" Type="Int32" />
+          <Property Name="User_PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="EnrollmentDate" Type="DateTime" Precision="3" />
+          <Property Name="LastLoggedIn" Type="DateTime" Precision="3" />
+          <Property Name="StatusId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserEnrollment">
+          <Key>
+            <PropertyRef Name="UserEnrollmentId" />
+          </Key>
+          <Property Name="UserEnrollmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TriggerEventId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserStatu">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="DevinTwilioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="AppointmentProviders" EntityType="Self.AppointmentProvider" />
+          <EntitySet Name="AppointmentTypes" EntityType="Self.AppointmentType" />
+          <EntitySet Name="DashboardTexts" EntityType="Self.DashboardText" />
+          <EntitySet Name="Messages" EntityType="Self.Message" />
+          <EntitySet Name="MMDomains" EntityType="Self.MMDomain" />
+          <EntitySet Name="MMSubDomains" EntityType="Self.MMSubDomain" />
+          <EntitySet Name="Providers" EntityType="Self.Provider" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="SmsReplies" EntityType="Self.SmsReply" />
+          <EntitySet Name="StageInTXes" EntityType="Self.StageInTX" />
+          <EntitySet Name="Triggers" EntityType="Self.Trigger" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserEnrollments" EntityType="Self.UserEnrollment" />
+          <EntitySet Name="UserStatus" EntityType="Self.UserStatu" />
+          <EntitySet Name="TriggerEvents" EntityType="DevinTwilioModel.TriggerEvent" />
+          <EntitySet Name="ScheduleMessages" EntityType="DevinTwilioModel.ScheduleMessage" />
+          <EntitySet Name="TriggerTypes" EntityType="DevinTwilioModel.TriggerType" />
+          <AssociationSet Name="FK_ScheduleMessage_TriggerType" Association="DevinTwilioModel.FK_ScheduleMessage_TriggerType">
+            <End Role="TriggerType" EntitySet="TriggerTypes" />
+            <End Role="ScheduleMessage" EntitySet="ScheduleMessages" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TriggerEvent">
+          <Key>
+            <PropertyRef Name="TriggerEvent_ID" />
+          </Key>
+          <Property Name="TriggerEvent_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TriggerTypeId" Type="Int32" />
+          <Property Name="TriggerEvent_Day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TriggerEvent_Event" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ScheduleMessage">
+          <Key>
+            <PropertyRef Name="ScheduleMessage_ID" />
+          </Key>
+          <Property Name="ScheduleMessage_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleMessage_Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleMessage_TriggerTypeID" Type="Int32" />
+          <Property Name="ScheduleMessage_TriggerEventID" Type="Int32" />
+          <Property Name="ScheduleMessage_TriggerID" Type="Int32" />
+          <Property Name="ScheduleMessage_StartTime" Type="DateTime" Precision="7" />
+          <Property Name="ScheduleMessage_EndTime" Type="DateTime" Precision="7" />
+          <Property Name="ScheduleMessage_FrequencyOfDelivery" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleMessage_If1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleMessage_If2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleMessage_OtherNotes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleMessage_TimesSent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleMessage_MMDomainID" Type="Int32" />
+          <Property Name="ScheduleMessage_MMSubDomainID" Type="Int32" />
+          <Property Name="ScheduleMessage_Time" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Display_MessageId" Type="Int32" />
+          <Property Name="Appointment_Schedule" Type="Int32" />
+          <NavigationProperty Name="TriggerType" Relationship="DevinTwilioModel.FK_ScheduleMessage_TriggerType" FromRole="ScheduleMessage" ToRole="TriggerType" />
+        </EntityType>
+        <EntityType Name="TriggerType">
+          <Key>
+            <PropertyRef Name="TriggerType_ID" />
+          </Key>
+          <Property Name="TriggerType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TriggerType_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ScheduleMessages" Relationship="DevinTwilioModel.FK_ScheduleMessage_TriggerType" FromRole="TriggerType" ToRole="ScheduleMessage" />
+        </EntityType>
+        <Association Name="FK_ScheduleMessage_TriggerType">
+          <End Type="DevinTwilioModel.TriggerType" Role="TriggerType" Multiplicity="0..1" />
+          <End Type="DevinTwilioModel.ScheduleMessage" Role="ScheduleMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TriggerType">
+              <PropertyRef Name="TriggerType_ID" />
+            </Principal>
+            <Dependent Role="ScheduleMessage">
+              <PropertyRef Name="ScheduleMessage_TriggerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DevinTwilioModelStoreContainer" CdmEntityContainer="DevinTwilioEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="DevinTwilioModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="Appointment_ID" ColumnName="Appointment_ID" />
+                <ScalarProperty Name="Appointment_PatientID" ColumnName="Appointment_PatientID" />
+                <ScalarProperty Name="Appointment_ProviderID" ColumnName="Appointment_ProviderID" />
+                <ScalarProperty Name="Appointment_Trigger_EventId" ColumnName="Appointment_Trigger_EventId" />
+                <ScalarProperty Name="Appointment_Description" ColumnName="Appointment_Description" />
+                <ScalarProperty Name="Appointment_StartTime" ColumnName="Appointment_StartTime" />
+                <ScalarProperty Name="Appointment_EndTime" ColumnName="Appointment_EndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppointmentProviders">
+            <EntityTypeMapping TypeName="DevinTwilioModel.AppointmentProvider">
+              <MappingFragment StoreEntitySet="AppointmentProvider">
+                <ScalarProperty Name="AppointmentProvider_ID" ColumnName="AppointmentProvider_ID" />
+                <ScalarProperty Name="AppointmentProvider_Name" ColumnName="AppointmentProvider_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppointmentTypes">
+            <EntityTypeMapping TypeName="DevinTwilioModel.AppointmentType">
+              <MappingFragment StoreEntitySet="AppointmentType">
+                <ScalarProperty Name="AppointmentType_ID" ColumnName="AppointmentType_ID" />
+                <ScalarProperty Name="AppointmentType_Name" ColumnName="AppointmentType_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DashboardTexts">
+            <EntityTypeMapping TypeName="DevinTwilioModel.DashboardText">
+              <MappingFragment StoreEntitySet="DashboardText">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="DevinTwilioModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
+                <ScalarProperty Name="Message_Messages" ColumnName="Message_Messages" />
+                <ScalarProperty Name="Message_TriggerTypeID" ColumnName="Message_TriggerTypeID" />
+                <ScalarProperty Name="Message_TriggerEventID" ColumnName="Message_TriggerEventID" />
+                <ScalarProperty Name="Message_TriggerID" ColumnName="Message_TriggerID" />
+                <ScalarProperty Name="Message_Time" ColumnName="Message_Time" />
+                <ScalarProperty Name="Message_FrequencyOfDelivery" ColumnName="Message_FrequencyOfDelivery" />
+                <ScalarProperty Name="Message_If1" ColumnName="Message_If1" />
+                <ScalarProperty Name="Message_If2" ColumnName="Message_If2" />
+                <ScalarProperty Name="Message_OtherNotes" ColumnName="Message_OtherNotes" />
+                <ScalarProperty Name="Message_TimesSent" ColumnName="Message_TimesSent" />
+                <ScalarProperty Name="Message_MMDomainID" ColumnName="Message_MMDomainID" />
+                <ScalarProperty Name="Message_MMSubDomainID" ColumnName="Message_MMSubDomainID" />
+                <ScalarProperty Name="Message_StageInTXID" ColumnName="Message_StageInTXID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MMDomains">
+            <EntityTypeMapping TypeName="DevinTwilioModel.MMDomain">
+              <MappingFragment StoreEntitySet="MMDomain">
+                <ScalarProperty Name="MMDomain_ID" ColumnName="MMDomain_ID" />
+                <ScalarProperty Name="MMDomain_Name" ColumnName="MMDomain_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MMSubDomains">
+            <EntityTypeMapping TypeName="DevinTwilioModel.MMSubDomain">
+              <MappingFragment StoreEntitySet="MMSubDomain">
+                <ScalarProperty Name="MMSubDomain_ID" ColumnName="MMSubDomain_ID" />
+                <ScalarProperty Name="MMSubDomain_Name" ColumnName="MMSubDomain_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="DevinTwilioModel.Provider">
+              <MappingFragment StoreEntitySet="Provider">
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DevinTwilioModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmsReplies">
+            <EntityTypeMapping TypeName="DevinTwilioModel.SmsReply">
+              <MappingFragment StoreEntitySet="SmsReply">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="ParentSid" ColumnName="ParentSid" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MessageResponse" ColumnName="MessageResponse" />
+                <ScalarProperty Name="SmsStatus" ColumnName="SmsStatus" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="ResponseDate" ColumnName="ResponseDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StageInTXes">
+            <EntityTypeMapping TypeName="DevinTwilioModel.StageInTX">
+              <MappingFragment StoreEntitySet="StageInTX">
+                <ScalarProperty Name="StageInTX_ID" ColumnName="StageInTX_ID" />
+                <ScalarProperty Name="StageInTX_Name" ColumnName="StageInTX_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Triggers">
+            <EntityTypeMapping TypeName="DevinTwilioModel.Trigger">
+              <MappingFragment StoreEntitySet="Trigger">
+                <ScalarProperty Name="Trigger_ID" ColumnName="Trigger_ID" />
+                <ScalarProperty Name="Trigger_Trigger" ColumnName="Trigger_Trigger" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DevinTwilioModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="User_PhoneNumber" ColumnName="User_PhoneNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />
+                <ScalarProperty Name="LastLoggedIn" ColumnName="LastLoggedIn" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserEnrollments">
+            <EntityTypeMapping TypeName="DevinTwilioModel.UserEnrollment">
+              <MappingFragment StoreEntitySet="UserEnrollment">
+                <ScalarProperty Name="UserEnrollmentId" ColumnName="UserEnrollmentId" />
+                <ScalarProperty Name="TriggerEventId" ColumnName="TriggerEventId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStatus">
+            <EntityTypeMapping TypeName="DevinTwilioModel.UserStatu">
+              <MappingFragment StoreEntitySet="UserStatus">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TriggerEvents">
+            <EntityTypeMapping TypeName="DevinTwilioModel.TriggerEvent">
+              <MappingFragment StoreEntitySet="TriggerEvent">
+                <ScalarProperty Name="TriggerEvent_Event" ColumnName="TriggerEvent_Event" />
+                <ScalarProperty Name="TriggerEvent_Day" ColumnName="TriggerEvent_Day" />
+                <ScalarProperty Name="TriggerTypeId" ColumnName="TriggerTypeId" />
+                <ScalarProperty Name="TriggerEvent_ID" ColumnName="TriggerEvent_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScheduleMessages">
+            <EntityTypeMapping TypeName="DevinTwilioModel.ScheduleMessage">
+              <MappingFragment StoreEntitySet="ScheduleMessage">
+                <ScalarProperty Name="Appointment_Schedule" ColumnName="Appointment_Schedule" />
+                <ScalarProperty Name="Display_MessageId" ColumnName="Display_MessageId" />
+                <ScalarProperty Name="ScheduleMessage_Time" ColumnName="ScheduleMessage_Time" />
+                <ScalarProperty Name="ScheduleMessage_MMSubDomainID" ColumnName="ScheduleMessage_MMSubDomainID" />
+                <ScalarProperty Name="ScheduleMessage_MMDomainID" ColumnName="ScheduleMessage_MMDomainID" />
+                <ScalarProperty Name="ScheduleMessage_TimesSent" ColumnName="ScheduleMessage_TimesSent" />
+                <ScalarProperty Name="ScheduleMessage_OtherNotes" ColumnName="ScheduleMessage_OtherNotes" />
+                <ScalarProperty Name="ScheduleMessage_If2" ColumnName="ScheduleMessage_If2" />
+                <ScalarProperty Name="ScheduleMessage_If1" ColumnName="ScheduleMessage_If1" />
+                <ScalarProperty Name="ScheduleMessage_FrequencyOfDelivery" ColumnName="ScheduleMessage_FrequencyOfDelivery" />
+                <ScalarProperty Name="ScheduleMessage_EndTime" ColumnName="ScheduleMessage_EndTime" />
+                <ScalarProperty Name="ScheduleMessage_StartTime" ColumnName="ScheduleMessage_StartTime" />
+                <ScalarProperty Name="ScheduleMessage_TriggerID" ColumnName="ScheduleMessage_TriggerID" />
+                <ScalarProperty Name="ScheduleMessage_TriggerEventID" ColumnName="ScheduleMessage_TriggerEventID" />
+                <ScalarProperty Name="ScheduleMessage_TriggerTypeID" ColumnName="ScheduleMessage_TriggerTypeID" />
+                <ScalarProperty Name="ScheduleMessage_Message" ColumnName="ScheduleMessage_Message" />
+                <ScalarProperty Name="ScheduleMessage_ID" ColumnName="ScheduleMessage_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TriggerTypes">
+            <EntityTypeMapping TypeName="DevinTwilioModel.TriggerType">
+              <MappingFragment StoreEntitySet="TriggerType">
+                <ScalarProperty Name="TriggerType_Type" ColumnName="TriggerType_Type" />
+                <ScalarProperty Name="TriggerType_ID" ColumnName="TriggerType_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

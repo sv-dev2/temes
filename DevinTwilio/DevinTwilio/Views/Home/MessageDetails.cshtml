@@ -1,0 +1,86 @@
+﻿@model DevinTwilio.Models.ScheduleViewModels
+@{
+    ViewBag.Title = " Message Details";
+}
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-6"> <h2>Message Details</h2> </div>
+        <div class="col-md-6"> <h2>     @Html.ActionLink("Edit", "AddOrEdit", new { id = Model.ScheduleMessageID })    </h2>  </div>
+    </div>
+
+    <table class="table ">
+        <tr>
+            <td>
+                <b>  Id:</b>
+            </td>
+            <td> @Model.DisplayMessageID</td>
+        </tr>
+        <tr>
+            <td>
+                <b> Message:</b>
+            </td>
+            <td> @Model.Message</td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>Type: </b>
+            </td>
+            <td> @Model.TriggerTypeName</td>
+        </tr>
+
+        <tr>
+            <td>
+                <b> Last Sent:</b>
+            </td>
+            <td> @Model.TimeSent</td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>If 1: </b>
+            </td>
+            <td> @Model.If1</td>
+        </tr>
+
+        <tr>
+            <td>
+                <b> If 2: </b>
+            </td>
+            <td> @Model.If2</td>
+        </tr>
+
+
+    </table>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                @{Html.RenderAction("_SentMessagesDetails", new { @id = Model.ScheduleMessageID });}
+            </div>
+        </div>
+    </div>
+
+  }
+
+
+
+
+<div>
+
+    
+</div>
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#SentMessageDetail').DataTable();
+
+        });
+    </script>
+}

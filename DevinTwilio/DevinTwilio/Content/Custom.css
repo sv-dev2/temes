@@ -1,0 +1,206 @@
+﻿body {
+}
+
+.nav_bar_design .dropdown-menu {
+    padding: 5px 10px;    background: #fff;
+}
+.nav_bar_design .dropdown-menu .dropdown-item {
+    width: 100%;
+    display: block;
+    line-height: 25px;color: #999;
+}
+#PatientDetail table td, #PatientDetail table th {
+    border-top: none;
+}
+.nav_bar_design .dropdown button.btn.btn-primary {
+    background: transparent;
+    border: transparent;
+    color: #999;
+    padding: 15px;
+}
+
+#PatientData_wrapper table#PatientData {    
+
+    width: 100%;    border: 1px solid #ccc;
+}
+#PatientData_wrapper table.dataTable thead th{border-bottom: 1px solid #ccc;
+    background: #222!important;
+    color: #fff;
+    border-right: 1px solid #999;
+    font-size: 12px;
+    padding: 15px; white-space: nowrap;
+
+}
+.border-right-side h2 {
+    margin: 10px 0;
+    font-size: 22px;
+        text-transform: capitalize;
+        font-weight:600;
+}
+.login-section h2 {
+    margin: 10px 0;
+    font-size: 22px;
+        text-transform: capitalize;
+         font-weight:600;
+}
+.login-section h4 {
+    font-size: 14px;
+}
+.login-section {
+    background: #f8f8f8;
+    margin-left: 0px;
+    padding: 30px;
+}
+.login-page-section {
+    margin: 30px 0 0;
+}
+.login-page-section .login-section input.btn.btn-default {
+    background: #222;
+    color: #fff;
+    border:1px solid #222;
+}
+.login-page-section #registerLink1 {
+    color: #222;
+    font-size: 16px;
+}
+footer p {
+    text-align: center;margin-top:50px;
+}
+h2.create-title{
+    font-size: 22px;
+     text-transform: capitalize;
+    font-weight:600;text-align:center;
+}
+h4.create-account{font-size: 14px;text-align:center;}
+.register-form {
+    background: #f8f8f8;
+    padding: 30px;
+    margin:30px auto auto;
+    width:50%;
+}
+.register-form label {
+    font-size: 13px;
+}
+.login-section label {
+    font-size: 13px;
+}
+.border-right-side p{font-size:13px;}
+.patient-page h2 {
+    font-size: 20px;
+  font-weight: 600; color:#222;
+}
+.patient-page .row{border:1px solid #ccc;padding:10px 0;margin-bottom: 30px;background:#f8f8f8;border-right:1px solid #ccc;}
+.patient-page .border-right {
+    border-right: 1px solid #ccc;
+}
+.patient-page table th {
+    font-size: 13px;
+}
+.patient-page a:hover, .patient-page a:focus{text-decoration:none;}
+#PatientData_wrapper table td {
+    border-right: 1px solid #ccc;font-size:13px;
+}
+#PatientData_wrapper table td a {
+    color: #222;
+}
+#MessagesData_wrapper table#MessagesData {    
+    display: inline-block;
+    width: 100%;    border: 1px solid #ccc;
+}
+#MessagesData_wrapper table.dataTable thead th{border-bottom: 1px solid #ccc;
+    background: #222!important;
+    color: #fff;
+    border-right: 1px solid #999;
+    font-size: 12px;
+    padding: 15px;
+
+}
+#MessagesData_wrapper table td {
+    border-right: 1px solid #ccc;font-size:13px;
+}
+#MessagesData_wrapper table td a {
+    color: #222;
+}
+#PatientData_wrapper table td:last-child {
+    border-right: none;
+}
+#PatientData_wrapper table th:last-child {
+    border-right: none;
+}
+#MessagesData_wrapper table td:last-child {
+    border-right: none;
+}
+#MessagesData_wrapper table th:last-child {
+    border-right: none;
+}
+#LogsData_wrapper table#LogsData {    
+       border: 1px solid #ccc;
+}
+#LogsData_wrapper table.dataTable thead th{border-bottom: 1px solid #ccc;
+    background: #222!important;
+    color: #fff;
+    border-right: 1px solid #999;
+    font-size: 12px;
+    padding: 15px;
+
+}
+#LogsData_wrapper table td {
+    border-right: 1px solid #ccc;font-size:13px;
+}
+#LogsData_wrapper table td a {
+    color: #222;
+}
+#LogsData_wrapper table td:last-child {
+    border-right: none;
+}
+#LogsData_wrapper table th:last-child {
+    border-right: none;
+}
+
+#AppointmentData_wrapper table#AppointmentData {    
+       border: 1px solid #ccc;
+}
+#AppointmentData_wrapper table.dataTable thead th{border-bottom: 1px solid #ccc;
+    background: #222!important;
+    color: #fff;
+    border-right: 1px solid #999;
+    font-size: 12px;
+    padding: 15px;
+
+}
+#AppointmentData_wrapper table td {
+    border-right: 1px solid #ccc;font-size:13px;
+}
+#AppointmentData_wrapper table td a {
+    color: #222;
+}
+#AppointmentData_wrapper table td:last-child {
+    border-right: none;
+}
+#AppointmentData_wrapper table th:last-child {
+    border-right: none;
+}
+
+.provider table {    
+       border: 1px solid #ccc;
+}
+.provider table th{border-bottom: 1px solid #ccc;
+    background: #222!important;
+    color: #fff;
+    border-right: 1px solid #999;
+    font-size: 12px;
+    padding: 15px;
+
+}
+.provider table td {
+    border-right: 1px solid #ccc;font-size:13px;
+}
+.provider table td a {
+    color: #222;
+}
+.provider table td:last-child {
+    border-right: none;
+}
+.provider table th:last-child {
+    border-right: none;
+}

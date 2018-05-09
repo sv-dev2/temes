@@ -1,0 +1,48 @@
+﻿@model DevinTwilio.Models.EventViewModels
+
+<div class="container body-content">
+    <h4>Edit Trigger Event.</h4>
+    @using (Html.BeginForm("AddOrEditTriggerEvent", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        if (TempData["successMsg"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["successMsg"]</strong>.
+            </div>
+        }
+        if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning">
+                <strong>@TempData["ErrorMessage"] </strong>
+            </div>
+        }
+        <hr />
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.TriggerTypeName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(M => M.TriggerTypeId, new SelectList(Model.TriggerTypeList, "TriggerTypeId", "TriggerTypeName"), "-Select-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TriggerTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.EventName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.EventName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.EventName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-success" value="Update" />
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DevinTwilio.Models.EventViewModels>
+
+<h3>Index</h3>
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped" id="EventData">
+    <thead>
+        <tr>
+            <th style="display:none;">@Html.DisplayName("ID")</th>
+            <th>
+                @Html.DisplayName("Day")
+            </th>
+            <th> @Html.DisplayName("Event Type")</th>
+            @*<th> @Html.DisplayName("Date Time")</th>*@
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="display:none;">@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TriggerEvent_Day)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.TriggerTypeName)</td>
+                @*<td>@Html.DisplayFor(modelItem => item.TriggerEvent_DateTime)</td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Are you sure you want to delete?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var messageTable = $('#EventData').DataTable();
+            messageTable.order([1, "desc"]).draw();
+            table.column(0).visible(false);
+        });
+    </script>
+}
+
+

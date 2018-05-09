@@ -1,0 +1,95 @@
+Messages,ID,Trigger Type,Trigger Event,Trigger,Time,If 1,If 2,Times Sent,MM Domain,MM Sub-Domain
+"Your next <event name> visit at <provider> is <appointment date/time>. Reply ""1"" to reschedule or reply ""2"" to get directions to the clinic.",1,Appointment,Appointment 7,"7 days before,1 day before",9am,"""To reschedule, call 212-562-1082""","""""""2"""" Bellevue is on 462 1st avenue and 28th st. Go to the 2nd floor in the main lobby and head to desk 2B""",2,Self-Management ,Appointment Reminders 
+"Transit issues, work schedules, taking care of the family, and clinic lines can delay your visit. Get in early - get out easy! ",6,Appointment,Appointment 1,1 day before,9am,,,1,Self-Management ,Appointment Adherence
+Missing visits = missing refills and getting sick. Late visits = repeat visits in 1 week. Get in early and avoid all the hassle. ,7,Appointment,Appointment 2,1 day before,9am,,,1,Self-Management ,Appointment Adherence
+"You're doing great handling your recovery. Get in early, avoid late visits, avoid clinic lines",8,Appointment,Appointment 3,1 day before,9am,,,1,Self-Management ,Appointment Adherence
+"Lost your phone? Get a new number? Keep us updated of your new number so we can keep you updated with your care at Bellevue
+",9,Appointment,Appointment 4,1 day before,9am,,,1,Self-Management ,Appointment Adherence
+"Need to reschedule ur suboxone clinic visit? Want to see us sooner? Reply ""1"" for our number. Fyi we're open Mon&Tues 9-12",10,Appointment,Appointment 5,1 day before,9am,"""To reschedule, call 212-562-1082""",,1,Self-Management ,Appointment Adherence
+"Transit issues, getting out of work or school, and lines at the clinic can delay your visit. Plan early, get in early, and get out easy! Reply ""1"" to reschedule your appointment.",11,Appointment,Appointment 6,1 day before,9am,"""To reschedule, call 212-562-1082""",,1,Self-Management ,Appointment Adherence
+"Standing around in the waiting area? Reply ""1"" to get to our clinic couselor number and get tips and advice about your recovery. ",14,Appointment,"Appointment 2,Appointment 4",day of,9am,"""Call 917-239-3850 to speak with Jesus, our clinic counselor""",,1,Self-Management ,Administrative healthcare utilization 
+"Depression, anxiety, or stress getting too much? Hit ""1"" for our Psychiatry clinic number or ""2"" for our outpatient counseling program. Its free!",15,Appointment,"Appointment 3,Appointment 5",day of,9am,"""Call 212-562-8856 or walk-in anytime to C-building, 2nd floor for an initial visit""","""Call 212-562-4487 or walk-in anytime to XX building, XX floor for an initial visit""",1,Self-Management ,Administrative healthcare utilization 
+There's always ups&downs but hang in there! Stopping your sbx and relapsing on just a small amount can put you at risk of an OD. Stay solid!,17,Enrollment,Day 3,day of,9am,,,1,Self-Management ,Overdose Prevention
+"Be healthy and don't risk an OD. Avoid up'ing ur sbx dose on top of alcohol or benzo's (Xanax, klonopin). Talk to your doc first.",20,Enrollment,Day 10,day of,9am,,,1,Self-Management ,Overdose Prevention
+"Don't let an OD take another life! Stick with ur narcan kit, get trained, and save a life. Reply ""1"" to get more info ",22,Enrollment,Day 1,day of,12pm,"""Pull off the yellow&red caps->attach the nasal piece and naloxone in the barrel->tilt head back->pray half in one nostril->if no response in 2 minutes, spray half in other nostril. Call 911!""",,1,Self-Management ,Overdose Prevention
+Get a free narcan kit from ur doctor! It saves lives! Click https://youtu.be/-t8ezZR4Xjk for a quick video on giving narcan (data usage charges may apply),23,Appointment,"Appointment 7,Appointment 2",day of,9am,,,1,Self-Management ,Overdose Prevention
+"On to the day 4! Avoid adjusting your dose and take the amount you took yesterday. Reply ""1"" if ur feeling sick or need help from ur suboxone doc",37,Enrollment,Day 4,day of,9am,We're here for you! Send a text to 917-XXX-XXXX and your suboxone doctor will get back to you Mon-Fri between 9-5pm.,,,Self-Management ,Bup dosing guide - day 4
+"Avoid certain people, places, things that make u use. And take a minute and reflect on positive people, places, things that can get u through this!",50,Enrollment,Day 5,day of,6pm,,,,Self-Management ,CBT
+"Don't want to get locked up, lose your money, and go through withdrawals again. Stick with the treatment, it works! ",51,Enrollment,Day 6,day of,2pm,,,,Self-Management ,supportive
+"Ask yourself ""When I have urges, cravings, or a physical needs, what 3 easy actvities will help me stay clean?"" ",54,Enrollment,Day 7,day of,6pm,,,,Self-Management ,CBT
+"Ask yourself ""When I have urges, cravings, or a physical needs, what 3 people help motivate me to stay clean?""",55,Enrollment,Day 8,day of,2pm,,,,Self-Management ,CBT
+"What else helps you get through the day? Exercise, calling a friend, dancing, music? Switch ur routines and enjoy your sobriety! ",57,Enrollment,Day 9,day of,2pm,,,,Self-Management ,CBT
+"Take a minute and reflect: ""By staying sober, I hope to experience and enjoy these two things..?""",61,Enrollment,Day 11,day of,2pm,,,,Self-Management ,CBT
+"Reflect on what it takes to stay clean. ""When I see people around me using, what 2 easy things can I do to get my mind off it?""  ",63,Enrollment,Day 12,day of,2pm,,,,Self-Management ,CBT
+"You don't have to use today. Hold on, someone cares. Call a friend, go to a meeting, link with our clinic counselors. ",66,Enrollment,Day 13,day of,6pm,,,,Self-Management ,supportive
+There's help out there; Be around people that are supportive. ,67,Enrollment,Day 14,day of,2pm,,,,Self-Management ,supportive
+"Stay busy. Go to group meetings, do activities or exercises that make you feel better, ",69,Enrollment,Day 15,day of,2pm,,,,Self-Management ,supportive
+Stay strong - Stay focused - Never give up - Hang in there!,71,Enrollment,Day 16,day of,2pm,,,,Self-Management ,supportive
+"This is your doctor, hope you're doing well and see you soon. ",73,Enrollment,Day 17,day of,2pm,,,,Self-Management ,supportive
+"You put a lot of time to get here, don't forget what you've been through. ",75,Enrollment,Day 18,day of,2pm,,,,Self-Management ,supportive
+"There's help out there. Be around people, meetings, and counselors that are supporting your recovery. ",77,Enrollment,Day 19,day of,2pm,,,,Self-Management ,supportive
+You're doing great; Keep up the good work; Send congratulatory messages. ,80,Enrollment,Day 20,day of,6pm,,,,Self-Management ,supportive
+You know you're important to us. We're here to support you. ,82,Enrollment,Day 21,day of,6pm,,,,Self-Management ,supportive
+Be around positive people. Find someone you can talk to. ,83,Enrollment,Day 22,day of,2pm,,,,Self-Management ,supportive
+"It get's better, no more being sick. ",84,Enrollment,Day 23,day of,2pm,,,,Self-Management ,supportive
+"Don't change your routine, Stick to it. ",85,Enrollment,Day 24,day of,2pm,,,,Self-Management ,supportive
+"You're not cured yet. If you feel like relapsing, reach out for help. ",86,Enrollment,Day 25,day of,2pm,,,,Self-Management ,supportive
+"Taking extra sbx won't help ur anxiety or stress - get real help! Talk to your doc or reply ""1"" to get a visit with our walk-in Psychiatry clinic ",87,Enrollment,Day 26,day of,12pm,"""Call 212-562-8856 or walk-in anytime to C-building, 2nd floor for an initial visit""",,,Self-Management ,Buprenorphine Dosing Information
+Suboxone helps you stay clean! Click on this 2 min video URL•À?.LINK to get more info on how it works and possible side effects (Data usage costs may apply),88,Enrollment,Day 27,day of,12pm,,,,Self-Management ,Buprenorphine Dosing Information
+"Don't exceed your daily dosage, be mindful of when the desire to exceed your dosage occurs. ",89,Enrollment,Day 28,day after,12pm,,,,Self-Management ,Buprenorphine Dosing Information
+"Keep a schedule, take your meds on time. Don't take it when you feel like it. ",90,Enrollment,Day 29,day of,12pm,,,,Self-Management ,Buprenorphine Dosing Information
+"Stick with the meds! Sbx is safe with most anti-retrovirals. Talk to your doc to get more info.
+",91,Enrollment,Day 30,day of,12pm,,,,Self-Management  (HIV/HCV),HIV/HCV General Information 
+"Know your viral load, CD4, Genotype? Get tested, get your results.
+",92,Enrollment,Day 31,day of,12pm,,,,Self-Management  (HIV/HCV),HIV/HCV General Information 
+"Need more help? Bellevue can help you with depression, HIV, Hep C services. Ask your doc to get started on treatment",93,Enrollment,Day 32,day of,12pm,,,,Self-Management  (HIV/HCV),HIV/HCV General Information 
+"Text the Dept of Health @ 877-877 and type ""testnyc"" for free HIV testing or ""care"" for HIV treatment options.",94,Enrollment,Day 33,day of,12pm,,,,Self-Management  (HIV/HCV),HIV/HCV General Information 
+"Get cured, stay on your antiretrovirals. Take them at the same time each day, use a calendar, pill tray, phone alarm, or ask friends/family to remind you. ",95,Enrollment,Day 34,day of,12pm,,,,Self-Management  (HIV/HCV),HIV/HCV Adherence 
+"Can be tough remembering to take your meds every day. Talk to your doc if you're feeling side effects, sick or depressed, or losing motivation in ur tx. ",96,Enrollment,Day 35,day of,12pm,,,,Self-Management  (HIV/HCV),HIV/HCV Adherence 
+"Feel good and get treated! Sticking with ur meds helps. If you forget them, tell your doc asap.  ",97,Enrollment,Day 36,day of,12pm,,,,Self-Management  (HIV/HCV),HIV/HCV Adherence 
+"Sticking with meds and appts can be hard for some. Get help from ur family and friends. Reply ""1"" to link with other people in tx supporting each other through this.",98,Enrollment,Day 37,day of,12pm,,,,Self-Management  (HIV/HCV),HIV/HCV Adherence 
+"Hitting a rough moment? Talk to others who've  been in your shoes. Reply ""1"" to get 1800 numbers for NA and SMART recovery groups and talk with someone who gets you. ",99,Enrollment,Day 38,day of,2pm,For NA call 212-929-6262 and check out SMART recovery here http://www.smartrecovery.org/,,,Behavioral Support,Counseling and 12 Step Group Participation 
+"Feeling bored, alone, or frustrated? Link with SMART recovery groups to help you build and maintain the motivation to stay clean, coping with urges, and living a balanced life. Reply ""1"" for more info",100,Enrollment,Day 39,day of,2pm,Click here for SMART online forums https://www.smartrecovery.org/community/ and meeting schedules https://www.smartrecovery.org/community/calendar.php,,,Behavioral Support,Counseling and 12 Step Group Participation 
+"Tap into your support network! Friends, family, church groups.. Need more help though? Check out 12 step or SMART recovery groups for individual and group support. There's people who can help!",101,Enrollment,Day 40,day of,2pm,,,,Behavioral Support,Counseling and 12 Step Group Participation 
+"What some more tips to stay clean and in treatment? Link up with our CDOP counselors just next to our sbx clinic. Reply ""1"" to get more information. ",102,Enrollment,Day 41,day of,2pm,"""Call 212-562-4487 or walk-in anytime to XX building, XX floor for an initial visit""",,,Behavioral Support,Counseling and 12 Step Group Participation 
+"If you put your mind on it, you can do it. Sometimes an extra push can go a long way. Reply ""1"" to get support and linked with our CDOP counselors.",103,Enrollment,Day 42,day of,2pm,"""Call 212-562-4487 or walk-in anytime to XX building, XX floor for an initial visit""",,,Behavioral Support,Counseling and 12 Step Group Participation 
+"These first weeks are crucial. And we're here for you. Combining sbx with outpatient counseling can make a difference! Reply ""1"" to get try out a session with our counselors. ",104,Enrollment,Day 43,day of,2pm,"""Call 212-562-4487 or walk-in anytime to XX building, XX floor for an initial visit""",,,Behavioral Support,Counseling and 12 Step Group Participation 
+"Sometimes it's the small steps that are the most helpful. Linking with NA or AA, SMART groups, volunteering, exercising, more time with the fam, church, art, music, sports - enjoy your sobriety!!",105,Enrollment,Day 44,day of,2pm,,,,Behavioral Support,Counseling and 12 Step Group Participation 
+"Stay positive, you've made it into treatment! Link up with NA, AA, SMART groups, friends or family. Getting tips from others can be a big help. Reach out!",106,Enrollment,Day 45,day of,2pm,,,,Behavioral Support,Counseling and 12 Step Group Participation 
+"You're not alone. People care about you. Reach out to NA or AA, SMART groups, church groups, supportive friends or family, and our clinic staff. ",107,Enrollment,Day 46,day of,2pm,,,,Behavioral Support,Counseling and 12 Step Group Participation 
+Stay active with other people in recovery. ,108,Enrollment,Day 47,day of,2pm,,,,Behavioral Support,Counseling and 12 Step Group Participation 
+"To reschedule, call 212-562-1082",109,Response,,,,,,,,
+"""2"" Bellevue is on 462 1st avenue and 28th st. Go to the 2nd floor in the main lobby and head to desk 2B",110,Response,,,,,,,,
+To reschedule call 212-562-1634,119,Response,,,,,,,,
+To reschedule call 212-562-1341,120,Response,,,,,,,,
+To reschedule call 212-562-5710,121,Response,,,,,,,,
+To reschedule call 212-562-4487,122,Response,,,,,,,,
+"""2"" Bellevue is on 462 1st avenue and 28th st. Go to the XX building's XX floor and head to XX.",123,Response,,,,,,,,
+Call METROPLUS 1-800-442-2560 or head to the MetroPlus table in Bellevue's main lobby to get signed up,139,Response,,,,,,,,
+"Call 917-239-3850 to speak with Jesus, our clinic counselor",140,Response,,,,,,,,
+"Call 212-562-8856 or walk-in anytime to C-building, 2nd floor for an initial visit",141,Response,,,,,,,,
+"Call 212-562-4487 or walk-in anytime to XX building, XX floor for an initial visit",142,Response,,,,,,,,
+"Pull off the yellow&red caps->attach the nasal piece and naloxone in the barrel->tilt head back->pray half in one nostril->if no response in 2 minutes, spray half in other nostril. Call 911!",143,Response,,,,,,,,
+VIDEO LINK,144,Response,,,,,,,,
+Get to BUP DOSING Sequence,145,Response,,,,,,,,
+We'll check back in a few hours to see how you're doing. Hang in there.,146,Response,,,,,,,,
+"Great, the dose is helping. We'll check in a few hours and see how things are going.",147,Response,,,,,,,,
+"Glad the dose is helping you! Wait for a few hours and we'll check in again. Fyi, if u don't feel sick or have cravings, don't take extra sbx",148,Response,,,,,,,,
+"Okay, take another 4mg . We'll check back in a few hours to see how you're feeling.",149,Response,,,,,,,,
+"We got you! Take another half a tablet/strip (4mg). We'll check in a few hours. If you don't feel sick or have cravings, don't take extra sbx.",150,Response,,,,,,,,
+We got you! Take another 4mg and we'll check back in the morning. And fyi - Sbx kicks in about 30 minutes and lasts about 24 hours,151,Response,,,,,,,,
+The dose iw working! We'll get back to you in the morning. Fyi Sbx kicks in about 30 minutes and lasts about 24 hours,152,Response,,,,,,,,
+"Just fyi, 16mg is the max dose of sbx per day for this week. Talk with your doc at your next visit to up your dose if you're feeling sick or cravings",153,Response,,,,,,,,
+Take another 4mg only if you took 1 or 1.5 tabs today. The max dose is 16mg qd.,154,Response,,,,,,,,
+"Take half a tab if you haven't max'd ur daily dose of 16mg suboxone. We'll check back to see how you're doing. Stick with the tx, it works!",155,Response,,,,,,,,
+"Glad the dose is working. Being mindful of certain people, places, things, or stress, anxiety, boredom can cut your cravings",156,Response,,,,,,,,
+"Great, your dose is working out. We'll be sending you some messages to help you manage ur cravings",157,Response,,,,,,,,
+"Reply ""1"" if these urges are due to withdrawals, ""2"" if they're from anxiety or feeling down, ""3"" stress or boredom, or ""4"" cuz of people/places/things?",158,Response,,,,,,,,
+We're here for you! Send a text to 917-XXX-XXXX and your suboxone doctor will get back to you Mon-Fri between 9-5pm.,160,Response,,,,,,,,
+We got you! Send a text to 917-XXX-XXXX and our counselor will get back to you Mon-Fri between 9-5pm.,161,Response,,,,,,,,
+For NA,162,Response,,,,,,,,
+For NA call 212-929-6262 and check out SMART recovery here http://www.smartrecovery.org/,163,Response,,,,,,,,
+Click here for SMART online forums https://www.smartrecovery.org/community/ and meeting schedules https://www.smartrecovery.org/community/calendar.php,164,Response,,,,,,,,
+We're here for you! Send a text to 917-XXX-XXXX to get our counselor or suboxone doctor Mon-Fri between 9-5pm.,165,Response,,,,,,,,
+We'll contact you shortly to answer any questions you have.,167,Response,,,,,,,,
+We'll contact you shortly about this system and why it's useful.,168,Response,,,,,,,,

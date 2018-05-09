@@ -1,0 +1,69 @@
+﻿@model DevinTwilio.Models.ProviderViewModel
+
+<div class="container body-content">
+    <h4>Edit Provider.</h4>
+    @using (Html.BeginForm("AddOrEdit", "Provider", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        if (TempData["successMsg"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["successMsg"]</strong>.
+            </div>
+        }
+        if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning">
+                <strong>@TempData["ErrorMessage"] </strong>
+            </div>
+        }
+        <hr />
+        @Html.HiddenFor(m => m.ProviderId)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.ProviderName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(M => M.ProviderName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ProviderName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ContactName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.ContactName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ContactEmail, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.ContactEmail, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ContactPhone, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.ContactName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-success" value="Save" />
+                </div>
+            </div>
+    }
+</div>
+

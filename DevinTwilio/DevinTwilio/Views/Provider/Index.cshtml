@@ -1,0 +1,73 @@
+﻿@model IEnumerable<DevinTwilio.Models.ProviderViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="provider">
+    <table class="table table-striped" class="ProviderData">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProviderName)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactPhone)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProviderName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactPhone)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "AddOrEdit", new { id = item.ProviderId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProviderId }, new { onclick = "return confirm('Are you sure you want to delete?');" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+

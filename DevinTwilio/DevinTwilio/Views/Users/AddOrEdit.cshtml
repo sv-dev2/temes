@@ -1,0 +1,123 @@
+﻿@model DevinTwilio.Models.UserViewModels
+
+<link href="~/Datepicker/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Datepicker/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+<div class="container body-content">
+    <h4>Edit User.</h4>
+    @using (Html.BeginForm("AddOrEdit", "Users", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        if (TempData["successMsg"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["successMsg"]</strong>.
+            </div>
+        }
+        if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-warning">
+                <strong>@TempData["ErrorMessage"] </strong>
+            </div>
+        }
+        <hr />
+            @Html.HiddenFor(m => m.User_ID)
+
+            @Html.HiddenFor(m => m.ActionToDo)
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.User_Name, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @*@Html.DropDownListFor(M => M.User_ID, new SelectList(Model.UsesList, "User_ID", "User_Name"), "-Select-", new { @class = "form-control" })*@
+                    @Html.TextBoxFor(M => M.User_Name, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(m => m.User_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.MobileNumber, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MobileNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.EmailAddress, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserStatus, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(M => M.StatusId, new SelectList(Model.UserStatusList, "StatusId", "Status"), new { @class = "form-control" })
+                </div>
+            </div>
+
+          
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.EnrollmentDate, new { @class = "col-md-2 control-label" })
+                <div class="input-group date form_datetime col-md-4" data-link-field="dtp_input1">
+                    @Html.TextBoxFor(m => m.strEnrollmentDate, new { @class = "form-control" })
+
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" id="dtp_input1" value="" /><br />
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Notes, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.Notes, new
+               {
+                   @class = "form-control",
+                   rows = "2",
+                   cols = "20"
+               })
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-success" value="Update" />
+                </div>
+            </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/Datepicker/jquery/jquery-1.8.3.min.js"></script>
+    <script src="~/Datepicker/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Datepicker/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="~/Datepicker/bootstrap/js/bootstrap-datetimepicker.fr.js"></script>
+
+    <script type="text/javascript">
+
+        $(".form_datetime").datetimepicker({
+            "setDate": new Date(),
+            format: "mm/dd/yyyy HH:mm p"
+        });
+       
+        $('.form_time').datetimepicker({
+           // language: 'eng',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 1,
+            minView: 0,
+            maxView: 1,
+            forceParse: 0
+        });
+    </script>
+}

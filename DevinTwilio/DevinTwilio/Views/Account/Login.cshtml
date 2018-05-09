@@ -1,0 +1,79 @@
+﻿@model DevinTwilio.Models.UserViewModels
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="login-page-section">
+    <div class="row">
+        <div class="col-sm-6 border-right-side">
+            <h2>TeMeS</h2>
+            <p>
+                @*TeMeS is a Text Message Support System that help people facing addition succeed through the use of SMS messages.<br /><br />
+                <b>Learn More</b><br />
+                <b>Contact Us</b>*@
+
+                @Html.Raw(ViewBag.DashboardText)
+
+            </p>
+        </div>
+        <div class="col-sm-6 login-section">
+            <h2>login</h2>
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <h4>Use a local account to log in.</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.User_Name, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(m => m.User_Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.User_Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <input type="submit" value="Log in" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                    @*<p>
+                        @Html.ActionLink("Register", "Register", "Users", routeValues: null, htmlAttributes: new { id = "registerLink1" })
+                    </p>*@
+                    @* Enable this once you have account confirmation enabled for password reset functionality
+                        <p>
+                          @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>*@
+                }
+            </section>
+        </div>
+    </div>
+    @*<div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>*@
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
